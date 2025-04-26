@@ -1,0 +1,43 @@
+#######################################
+# Syntax Coloring Map For Logger
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Logger	KEYWORD1
+LogLevel	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+getInstance	KEYWORD2
+setLogLevel	KEYWORD2
+enableSerial	KEYWORD2
+enableFile	KEYWORD2
+setLogFilePath	KEYWORD2
+getLogFilePath	KEYWORD2
+setMaxFileSize	KEYWORD2
+getMaxFileSize	KEYWORD2
+getCurrentFileSize	KEYWORD2
+clearLogFile	KEYWORD2
+error	KEYWORD2
+warn	KEYWORD2
+info	KEYWORD2
+debug	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+LOG_ERROR	LITERAL1
+LOG_WARN	LITERAL1
+LOG_INFO	LITERAL1
+LOG_DEBUG	LITERAL1
+LOG	LITERAL1
+LOG_E	LITERAL1
+LOG_W	LITERAL1
+LOG_I	LITERAL1
+LOG_D	LITERAL1 
