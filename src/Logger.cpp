@@ -16,7 +16,7 @@ Logger::Logger() {
     currentFileSize = 0;
     
     // 初始化串口
-    SERIAL.begin(115200);
+    SERIAL_DBG.begin(115200);
     delay(100);
     
     // 初始化文件系统
@@ -101,7 +101,7 @@ bool Logger::clearLogFile() {
 // 初始化文件系统
 bool Logger::initFileSystem() {
     if (!LittleFS.begin()) {
-        SERIAL.println("LOGGER: 文件系统初始化失败！");
+        SERIAL_DBG.println("LOGGER: 文件系统初始化失败！");
         return false;
     }
     return true;
@@ -209,7 +209,7 @@ void Logger::writeLog(LogLevel level, const String& tag, const String& message) 
     
     // 写入串口
     if (serialEnabled) {
-        SERIAL.println(logMessage);
+        SERIAL_DBG.println(logMessage);
     }
     
     // 写入文件
