@@ -2,17 +2,6 @@
 #include <time.h>
 #include <stdarg.h>
 
-#ifdef ARDUINO_ARCH_ESP32
-#include "HWCDC.h"
-#endif
-
-#ifdef ARDUINO_ARCH_ESP32
-HWCDC USBSerial; // Definition of the USBSerial object
-#define SERIAL USBSerial
-#else
-#define SERIAL Serial // Fallback to standard Serial for other platforms    
-#endif
-
 // 初始化静态实例
 Logger* Logger::instance = nullptr;
 

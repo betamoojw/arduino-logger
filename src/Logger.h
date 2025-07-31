@@ -4,6 +4,17 @@
 #include <Arduino.h>
 #include <LittleFS.h>
 
+#ifdef ARDUINO_ARCH_ESP32
+#include "HWCDC.h"
+#endif
+
+#ifdef ARDUINO_ARCH_ESP32
+HWCDC USBSerial; // Definition of the USBSerial object
+#define SERIAL USBSerial
+#else
+#define SERIAL Serial // Fallback to standard Serial for other platforms    
+#endif
+
 // 定义日志级别
 enum LogLevel {
     LOG_ERROR = 0,
