@@ -10,9 +10,9 @@
 
 #ifdef ARDUINO_ARCH_ESP32
 HWCDC USBSerial; // Definition of the USBSerial object
-#define SERIAL USBSerial
+#define SERIAL_DBG USBSerial
 #else
-#define SERIAL Serial // Fallback to standard Serial for other platforms    
+#define SERIAL_DBG Serial // Fallback to standard Serial for other platforms    
 #endif
 
 // 定义日志级别
