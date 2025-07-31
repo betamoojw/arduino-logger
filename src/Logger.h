@@ -4,12 +4,9 @@
 #include <Arduino.h>
 #include <LittleFS.h>
 
-#ifdef ARDUINO_ARCH_ESP32
-#include "HWCDC.h"
-#endif
 
 #ifdef ARDUINO_ARCH_ESP32
-HWCDC USBSerial; // Definition of the USBSerial object
+extern HWCDC USBSerial;
 #define SERIAL_DBG USBSerial
 #else
 #define SERIAL_DBG Serial // Fallback to standard Serial for other platforms    
