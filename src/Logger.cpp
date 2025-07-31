@@ -2,6 +2,17 @@
 #include <time.h>
 #include <stdarg.h>
 
+#ifdef ARDUINO_ARCH_ESP32
+#include "HWCDC.h"
+#endif
+
+#ifdef ARDUINO_ARCH_ESP32
+HWCDC USBSerial; // Definition of the USBSerial object
+#define SERIAL USBSerial
+#else
+#define SERIAL Serial // Fallback to standard Serial for other platforms    
+#endif
+
 // 初始化静态实例
 Logger* Logger::instance = nullptr;
 
@@ -14,6 +25,10 @@ Logger::Logger() {
     logFilePath = "/logs.txt"; // 默认日志文件路径
     maxFileSize = 1024 * 10;   // 默认最大文件大小为10KB
     currentFileSize = 0;
+    
+    // 初始化串口
+    SERIAL.begin(115200);
+    delay(100);
     
     // 初始化文件系统
     if (fileEnabled) {
@@ -97,7 +112,7 @@ bool Logger::clearLogFile() {
 // 初始化文件系统
 bool Logger::initFileSystem() {
     if (!LittleFS.begin()) {
-        Serial.println("LOGGER: 文件系统初始化失败！");
+        SERIAL.println("LOGGER: 文件系统初始化失败！");
         return false;
     }
     return true;
@@ -205,7 +220,7 @@ void Logger::writeLog(LogLevel level, const String& tag, const String& message) 
     
     // 写入串口
     if (serialEnabled) {
-        Serial.println(logMessage);
+        SERIAL.println(logMessage);
     }
     
     // 写入文件
